@@ -33,6 +33,11 @@ jobs:
             perl Makefile.PL
             make
             make test
+      - name: --nozlib tests
+        run: |
+            perl Makefile.PL --nozlib CCFLAGS="-Werror=unused-parameter"
+            make
+            make test
 
   test-on-native-os:
     strategy:
