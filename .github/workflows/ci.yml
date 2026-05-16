@@ -30,7 +30,7 @@ jobs:
       - name: Regular tests
         run: |
             cpanm --installdeps --notest .
-            perl Makefile.PL
+            perl Makefile.PL --nozlib
             make
             make test
 
@@ -73,14 +73,14 @@ jobs:
     - name: Run tests on Linux and macOS
       if: ${{ matrix.runner != 'windows-latest' }}
       run: |
-        perl Makefile.PL
+        perl Makefile.PL --nozlib
         make
         make test
 
     - name: Run tests on Windows
       if: ${{ matrix.runner == 'windows-latest' }}
       run: |
-        perl Makefile.PL
+        perl Makefile.PL --nozlib
         gmake
         gmake test
 
